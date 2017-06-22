@@ -1,0 +1,18 @@
+var conversations = $('#conversations-list');
+console.log(conversations);
+console.log("<%= @conversation.to_yaml %>");
+
+
+
+var conversation = conversations.find("[data-conversation-id='" + "<%= @conversation.id %>" + "']");
+
+if (conversation.length !== 1) {
+  conversations.append("<%= j(render 'conversations/conversation', conversation: @conversation, user: current_user) %>");
+  conversation = conversations.find("[data-conversation-id='" + "<%= @conversation.id %>" + "']");
+}
+
+conversation.find('.panel-body').show();
+
+var direct_messages_list = conversation.find('.direct_messages-list');
+var height = direct_messages_list[0].scrollHeight;
+direct_messages_list.scrollTop(height);

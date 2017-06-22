@@ -1,0 +1,12 @@
+<li>
+  <div class="row">
+    <div class="<%= user.id == direct_message.user_id ? 'direct_message-sent' : 'direct_message-received' %>">
+      <%= direct_message.body %>
+    </div>
+  </div>
+</li>
+
+<% content_for :direct_message do %>
+  <span class = "bold"><%= gravatar_for direct_message.user %><%= direct_message.user.name %></span> <span><%= direct_message.timestamp %></span><br>
+  <%= direct_message.body %><br>
+<% end %>

@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606052346) do
+ActiveRecord::Schema.define(version: 20170620065716) do
+
+  create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -18,6 +23,40 @@ ActiveRecord::Schema.define(version: 20170606052346) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_channels_on_user_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conversations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "recipient_id"
+    t.integer  "sender_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true, using: :btree
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id", using: :btree
+    t.index ["sender_id"], name: "index_conversations_on_sender_id", using: :btree
+  end
+
+  create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "course_name"
+    t.string   "course_description"
+    t.string   "course_start_date"
+    t.string   "course_end_date"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "direct_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "body",            limit: 65535
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["conversation_id"], name: "index_direct_messages_on_conversation_id", using: :btree
+    t.index ["user_id"], name: "index_direct_messages_on_user_id", using: :btree
   end
 
   create_table "group_channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -35,6 +74,11 @@ ActiveRecord::Schema.define(version: 20170606052346) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groups_on_user_id", using: :btree
+  end
+
+  create_table "lectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -74,6 +118,8 @@ ActiveRecord::Schema.define(version: 20170606052346) do
   end
 
   add_foreign_key "channels", "users"
+  add_foreign_key "direct_messages", "conversations"
+  add_foreign_key "direct_messages", "users"
   add_foreign_key "group_channels", "channels"
   add_foreign_key "group_channels", "groups"
   add_foreign_key "groups", "users"

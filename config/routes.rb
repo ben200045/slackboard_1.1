@@ -1,27 +1,28 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: { registrations: "registrations"}
 
   resources :users do
-  	resources :groups, only: [:new, :create, :show, :index]
+  	resources :groups, only: [:new, :create, :show, :index] 	
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   resources :channels, only: [:new, :create, :show, :index]
+
+  resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
+
+    resources :direct_messages, only: [:create]
+  end  
+
 
   mount ActionCable.server => '/cable'
 
-  root to: 'view#landing'
+  root to: 'view#home'
 
-  scope '/api' do
-      scope '/groups' do
-        get '/', to: 'groups_api#index', as: 'groups_index_api'
-        get '/:id', to: 'groups_api#show', as: 'groups_show_api'
-      end
-      scope '/channels' do
-        get '/',  to: 'channels_api#index', as: 'channels_index_api'
-        get '/:id', to: 'channels_api#show', as: 'channels_show_api'
+  get '/join', to: 'groups#join'
 
-    end
-  end
+  get 'direct_messages', to: 'conversations#index'
+  
 end

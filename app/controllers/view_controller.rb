@@ -1,4 +1,8 @@
 class ViewController < ApplicationController
-	def landing
+	def home
+		
+	rescue
+		render file: "#{Rails.root}/public/404.html", status: 404
 	end
+	
 end

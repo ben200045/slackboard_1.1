@@ -1,0 +1,25 @@
+<div class="row">
+<!-- activity panel to float left -->
+    <div class="col m3 #170f11" id="choice-panel">
+        <p>what would you like to do? </p>
+        <!-- action references to be changed to link_to -->
+        <ul class="collection">
+            <li class="collection-item"><a href=#>courses.</a></li>
+            <li class="collection-item"><a href=#>assignments.</a></li>
+            <%if user_signed_in?%>
+                <li class="collection-item"><%= link_to 'mingle', user_groups_path(current_user.id)%></li>
+            <% end %>
+            <li class="collection-item"><a href=#>what's due?</a></li>
+        </ul>
+    </div>
+    <!-- content panel to float right -->
+    <div class="col m9 z-depth-1" id="content-panel">
+        <h1>Welcome!</h1>
+        <%= image_tag('students.jpg', class: 'img')%>
+        <p class="flow-text">
+            Welcome to [s/lackboard]*. 
+            A modern learning environment that is designed to make learning easy and effective. 
+            It is also made to be pleasing to the <i class="material-icons">visibility</i> because, who wants to browse a web page that looks like it was from the 90's?
+        </p>
+    </div>
+</div>

@@ -16,3 +16,102 @@
 $navbar-font-size: 1.5rem !default;
 @import "materialize";
 @import "custom";
+
+@mixin radial-background($inner, $outer)
+{
+    background: white; 
+    background: -webkit-linear-gradient($inner, $outer); 
+    background: -o-linear-gradient($inner, $outer); 
+    background: -moz-linear-gradient($inner, $outer); 
+    background: linear-gradient($inner, $outer); 
+}
+
+body
+{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main
+{
+    flex: 1 0 auto;
+}
+
+
+.float
+{
+  font-size: 0px;
+  margin: 0px;
+  padding: 0px;
+  clear: both;
+  float: none;
+  height: 0px;
+  width: 0px;
+  border: 0px none;
+  line-height: 0px;
+}
+
+.nav-wrapper
+{
+    background-color: #170f11;
+}
+
+.page-footer
+{
+    background-color: #170f11;
+}
+
+.btn
+{
+    background-color: #b6d7b9;
+    color: #000000;
+}
+
+.container
+{
+    text-align: center;
+    overflow: hidden;
+}
+
+#login-card
+{
+    width: 45%;
+    margin: 0 auto;
+}
+
+.img
+{
+    margin-left: 180px;
+    background-blend-mode: color-dodge;
+    border-radius: 425px;
+}
+
+#channel-panel
+{
+    background-color: #f18805;
+    overflow-y: hidden;
+}
+
+.direct_messages-list {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.direct_message-sent {
+  position: relative;
+  background-color: #D9EDF7;
+  border-color: #BCE8F1;
+  margin: 5px 20px;
+  padding: 10px;
+  float: right;
+}
+
+.direct_message-received {
+  background-color: #F1F0F0;
+  border-color: #EEEEEE;
+  margin: 5px 20px;
+  padding: 10px;
+  float: left;
+}

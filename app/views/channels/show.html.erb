@@ -1,19 +1,23 @@
-<% content_for :header do %>
-  <li class = "shutter-out-horizontal"><%= link_to('Log out', destroy_user_session_path, :method => :delete)%></li> 
-<% end %>
+
 
 <% content_for :side_bar do %>
-  <div class="col m1 #82b1ff blue accent-1 height"><p>Channels</p>
-    <p><%= link_to 'New channel', new_channel_path %></p>
-      <ul>
-	    <% @group_channels.each do |gc| %>
-  		  <li><%= link_to gc.title, channel_path(gc.id) %></li>
-  		<% end %>
-	  </ul>
+  <div class="col m3 #f18805 height" id="channel-panel">
+    <div class="card">
+      <div class="card-content">
+      <span class="card-title"><%= $group.title %></span> 
+      <small>Channels</small>
+        <ul class="collection">
+	        <% @group_channels.each do |gc| %>
+  		      <li class="collection-item"><%= link_to gc.title, channel_path(gc.id) %></li>
+  		    <% end %>
+	      </ul>
+      </div>
+    </div>
+    <%= link_to 'New channel', new_channel_path, class: 'btn' %>
   </div>
 <% end %>     
 <% content_for :chat_panel do %>
-<div class="col s11 height">
+<div class="col s9 z-depth-2 height">
   <h5><%= @channel.title %></h5>
   
   <div id="messages" data-channel-id="<%= @channel.id %>">
@@ -28,7 +32,7 @@
 	    <small class="text-muted">From 2 to 1000 characters</small>
 	  </div>
 
-	<%= f.submit "Post" %>
+	<%= f.submit "Post", class: 'btn' %>
   <% end %>
 <% end %>
 </div>	

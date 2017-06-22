@@ -1,5 +1,12 @@
-
-  <span class = "bold"><%= gravatar_for message.user %><%= message.user.name %></span> <span><%= message.timestamp %></span><br>
-  <%= message.body %><br>
+<div class="card">
+  <div class="card-content">
+    <%= gravatar_for message.user %>
+    <span class = "card-title"><%= message.user.name %></span> <br>
+    <%= message.body %><br>
+  </div>
+  <div class="card-action">
+    <span class="card-title"><%= message.timestamp %></span>
+  </div>
+</div>
 
 	

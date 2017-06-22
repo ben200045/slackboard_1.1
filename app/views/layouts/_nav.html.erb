@@ -1,0 +1,34 @@
+<div class="navbar-fixed">
+    <nav class = "nav-height">
+        <div class="nav-wrapper darken-2 z-depth-2">
+            <ul class="left hide-on-med-and-down">
+                <% unless user_signed_in? %>
+                    <%= link_to 'login', new_user_session_path %>
+                <% else%>
+                    <%= link_to 'log out', destroy_user_session_path, method: :delete %>
+                <% end %>
+            </ul>
+            <%= link_to 's/ackboard', root_path, class: 'brand-logo center' %>
+            <a href="" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <% if user_signed_in?%>
+                    <li><a href=#>courses</a></li>
+                    <li><%= link_to 'chat', user_groups_path(current_user.id) %></li>
+                <% else %>
+                    <li><a href=#>log in to chat or check your course progress</a></li>
+                <% end %>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <div class="userView">
+                    <i class="large material-icons">perm_identity</i>
+                </div>
+                <li><a href=#>courses</a></li>
+                <li><a href=#>assignments</a></li> 
+                <li><a href=#>channels</a></li>
+                <li><p>---------------</p></li>
+                <li><a href=#>contact</a></li>
+                <li><a href=#>about</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
