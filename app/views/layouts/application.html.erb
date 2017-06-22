@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChatApp</title>
+    <%= csrf_meta_tags %>
+     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <div class = "outer test">
+    <header>
+          <nav class = "nav-height">
+            <div class="nav-wrapper #f57c00 orange darken-2">
+              <a href="" class="brand-logo"><div class = "image-margins"></a>
+              <a href="" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <%= yield :header %>        
+                <li class = "shutter-out-horizontal"><a href="" >Contact</a></li>
+                <li class = "shutter-out-horizontal"><a href="">About</a></li>
+              </ul>
+              <ul class="side-nav" id="mobile-demo">
+                <%= yield :header %>
+                <li><a href="">Contact</a></li>
+                <li><a href="">About</a></li> 
+              </ul>
+            </div>
+          </nav>
+    </header>
+  <body>
+   
+    <main class = "center-align">
+      
+        <div class="row left-align">
+         
+           <%= yield :side_bar %>
+           <%= yield :chat_panel %> 
+   
+        </div>
+        <%= yield %>
+    </main>
+  </div>
+    <footer class="page-footer #FFB060 orange center-align">
+      <div class="container center-align">          
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2017 Copyright Text
+        </div>
+      </div>        
+    </footer>
+  
+  </body>
+
+</html>
+<script>
+  $( document ).ready(function()
+  {
+    $('.button-collapse').sideNav({});   
+  });
+</script>
+
+  

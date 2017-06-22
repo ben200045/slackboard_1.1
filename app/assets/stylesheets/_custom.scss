@@ -1,0 +1,76 @@
+@import "options";
+@import "mixins";
+@import "hacks";
+
+@mixin shutter-out-horizontal {
+	@include hacks();
+	position: relative;
+	@include prefixed(transition-property, color);
+	@include prefixed(transition-duration, $mediumDuration);
+
+	&:before {
+		height:20px;
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: $activeColor;
+		opacity: 0.3;
+		@include prefixed(transform, scaleX(0));
+		@include prefixed(transform-origin, 50%);
+		@include prefixed(transition-property, transform);
+		@include prefixed(transition-duration, $mediumDuration);
+		@include prefixed(transition-timing-function, ease-out);
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: white;
+
+		&:before {
+			@include prefixed(transform, scaleX(1));
+		}
+	}
+}
+
+
+
+.outer{
+	background-color: #fff;
+	height: 800px;
+	min-height:900px;
+}
+
+.nav-height{
+	height:65px;
+}
+
+.shutter-out-horizontal{
+	@include shutter-out-horizontal;
+}
+
+.bold{
+	font-weight:bold;
+}
+
+.height{
+	margin-bottom:-20px;
+	height:840px;
+	overflow: scroll;
+	 .avatar {
+	    margin: 0.5rem;
+	  }
+}
+
+.form-bottom{
+	margin-top:500px;
+}
+
+
+
+
+

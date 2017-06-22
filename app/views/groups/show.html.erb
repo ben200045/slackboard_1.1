@@ -1,0 +1,15 @@
+<% content_for :header do %>
+  <li class = "shutter-out-horizontal"><%= link_to('Log out', destroy_user_session_path, :method => :delete)%></li> 
+<% end %>
+
+<h5><%= @group.title %></h5>
+
+<h1>Channels</h1>
+
+<p><%= link_to 'New channel', new_channel_path %></p>
+
+<ul>
+  <% @group_channels.each do |gc| %>
+  	<li><%= link_to gc.title, channel_path(gc.id) %></li>
+  <% end %>
+</ul>

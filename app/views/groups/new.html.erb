@@ -1,0 +1,16 @@
+<% content_for :header do %>
+  <li class = "shutter-out-horizontal"><%= link_to('Log out', destroy_user_session_path, :method => :delete)%></li> 
+<% end %>
+
+<h1>Add group</h1>
+
+<%= form_for [:user, @group] do |f| %>
+   <div>
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true %>
+    <%= f.text_field :user_id, :value => current_user.id, :readonly => true, :hidden => true %>
+ 
+  </div>
+
+  <%= f.submit "Add!" %>
+<% end %>

@@ -1,0 +1,14 @@
+<% content_for :header do %>
+  <li class = "shutter-out-horizontal"><%= link_to('Log out', destroy_user_session_path, :method => :delete)%></li> 
+<% end %>
+
+<h1>Groups</h1>
+
+<p><%= link_to 'New Group', new_user_group_path %></p>
+
+<ul>
+  <%#= render @groups %>
+  <% @user_groups.each do |ug| %>
+  	<li><%= link_to ug.title, user_group_path(id: ug.id) %></li>
+  <% end %>
+</ul>
