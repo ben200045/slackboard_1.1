@@ -92,26 +92,3 @@ main
     background-color: #f18805;
     overflow-y: hidden;
 }
-
-.direct_messages-list {
-  max-height: 200px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.direct_message-sent {
-  position: relative;
-  background-color: #D9EDF7;
-  border-color: #BCE8F1;
-  margin: 5px 20px;
-  padding: 10px;
-  float: right;
-}
-
-.direct_message-received {
-  background-color: #F1F0F0;
-  border-color: #EEEEEE;
-  margin: 5px 20px;
-  padding: 10px;
-  float: left;
-}
