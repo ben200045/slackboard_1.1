@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :remove_cache_storage
 
   def after_sign_in_path_for(user)
-  	user_groups_path(current_user.id)
+  	root_path
   end
 
   def remove_cache_storage

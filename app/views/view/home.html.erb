@@ -7,7 +7,8 @@
             <li class="collection-item"><a href=#>courses.</a></li>
             <li class="collection-item"><a href=#>assignments.</a></li>
             <%if user_signed_in?%>
-                <li class="collection-item"><%= link_to 'mingle', user_groups_path(current_user.id)%></li>
+                <li class="collection-item"><%= link_to 'groups', user_groups_path(current_user.id)%></li>
+                <li class="collection-item"><%= link_to 'conversations', direct_messages_path(current_user.id) %></li>
             <% end %>
             <li class="collection-item"><a href=#>what's due?</a></li>
         </ul>
