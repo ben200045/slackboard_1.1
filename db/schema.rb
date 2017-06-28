@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620065716) do
+ActiveRecord::Schema.define(version: 20170627143331) do
+
+  create_table "assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "filler"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_assessments_on_course_id", using: :btree
+  end
 
   create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -117,6 +125,7 @@ ActiveRecord::Schema.define(version: 20170620065716) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "assessments", "courses"
   add_foreign_key "channels", "users"
   add_foreign_key "direct_messages", "conversations"
   add_foreign_key "direct_messages", "users"

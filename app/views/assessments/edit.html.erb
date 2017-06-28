@@ -1,0 +1,8 @@
+<%= stylesheet_link_tag "assessments" %>
+<h1>Editing Assessment</h1>
+<div id="mainshell">
+<%= render 'form', assessment: @assessment %>
+
+<%= link_to 'Show', @assessment %> |
+<%= link_to 'Back', assessments_path %>
+</div>

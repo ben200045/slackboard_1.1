@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Filler:</strong>
+  <%= @assessment.filler %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @assessment.course %>
+</p>
+
+<%= link_to 'Edit', edit_assessment_path(@assessment) %> |
+<%= link_to 'Back', assessments_path %>
